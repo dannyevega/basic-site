@@ -25,8 +25,10 @@ app.config(['$routeProvider', function($routeProvider){
 
 }]);
 
-app.controller("MainCtrl", ['$scope', function($scope){
-
+app.controller("MainCtrl", ['$scope', '$http', function($scope, $http){
+	$http.get('services.json').then(function(response){
+		$scope.services = response.data;
+	})
 }]);
 
 app.controller("ServicesCtrl", ['$scope', '$http', function($scope, $http){
@@ -35,6 +37,8 @@ app.controller("ServicesCtrl", ['$scope', '$http', function($scope, $http){
 	})
 }]);
 
-app.controller("ContactCtrl", ['$scope', function($scope){
-
+app.controller("ContactCtrl", ['$scope', '$http', function($scope, $http){
+	$http.get("locations.json").then(function(response){
+		$scope.locations = response.data;
+	})
 }]);
